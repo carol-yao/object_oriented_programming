@@ -1,14 +1,18 @@
 class Paperboy
 
-attr_reader :name, :quota, :experience, :side, :earnings
-attr_writer :name, :quota, :experience, :side
+attr_reader :name, :experience, :side, :earnings
+attr_writer :name, :experience, :side
 
-  def initialize(name, quota, experience, side, earnings)
+  def initialize(name, experience, side, earnings)
     @name = name
-    @quota = quota
     @experience = experience
     @side = side
     @earnings = earnings
   end
+
+  def quota
+    "#{ 50 + (experience/2.0) }"
+  end
+
 
 end
