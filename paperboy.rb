@@ -46,7 +46,7 @@ attr_writer :name, :experience, :side
       elsif total_houses == quota.to_i
         quota.to_i * 0.25
       else
-        total_houses * 0.25
+        (total_houses * 0.25) - 2
       end
     end
 end
