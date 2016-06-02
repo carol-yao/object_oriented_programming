@@ -17,23 +17,23 @@ attr_writer :name, :experience, :side
     def deliver(starting_address, end_address)
       if side == "even"
         if starting_address.even? && end_address.even?
-          "#{((end_address - starting_address) / 2) + 1 }"
+          "#{amount_paid(((end_address - starting_address) / 2) + 1)}"
         elsif starting_address.odd? && end_address.odd?
-          "#{(end_address - starting_address) / 2}"
+          "#{amount_paid((end_address - starting_address) / 2)}"
         elsif starting_address.odd? && end_address.even?
-          "#{(end_address - (starting_address - 1)) / 2}"
+          "#{amount_paid((end_address - (starting_address - 1)) / 2)}"
         elsif starting_address.even? && end_address.odd?
-          "#{((end_address + 1) - starting_address) / 2}"
+          "#{amount_paid(((end_address + 1) - starting_address) / 2)}"
         end
       elsif side == "odd"
         if starting_address.odd? && end_address.odd?
-          "#{((end_address - starting_address) / 2) + 1}"
+          "#{amount_paid(((end_address - starting_address) / 2) + 1)}"
         elsif starting_address.even? && end_address.even?
-          "#{(end_address - starting_address) / 2}"
+          "#{amount_paid((end_address - starting_address) / 2)}"
         elsif starting_address.odd? && end_address.even?
-          "#{(end_address - (starting_address - 1)) / 2}"
+          "#{amount_paid((end_address - (starting_address - 1)) / 2)}"
         elsif starting_address.odd? && end_address.odd?
-          "#{((end_address + 1) - starting_address) / 2}"
+          "#{amount_paid(((end_address + 1) - starting_address) / 2)}"
         end
       else
         "side not inputted properly"
@@ -41,10 +41,10 @@ attr_writer :name, :experience, :side
     end
 
     def amount_paid(total_houses)
-      if total_houses > quota
-        (quota * 0.25) + ((total_houses - quota) * 0.50)
-      elsif total_houses == quota
-        quota * 0.25
+      if total_houses > quota.to_i
+        (quota.to_i * 0.25) + ((total_houses - quota.to_i) * 0.50)
+      elsif total_houses == quota.to_i
+        quota.to_i * 0.25
       else
         total_houses * 0.25
       end
