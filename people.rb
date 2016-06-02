@@ -37,3 +37,9 @@ puts chris.greeting
 
 cristina = Student.new("Cristina")
 puts cristina.greeting
+
+puts chris.teach
+puts cristina.learn
+
+# will not be able to call teach method on student instance since
+# the teach method is local to the class Instructor
