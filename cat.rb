@@ -1,6 +1,6 @@
 class Cat
 
-  attr_reader :meal_time
+  attr_reader :name, :preferred_food, :meal_time
 
   def initialize(name, preferred_food, meal_time)
     @name = name
@@ -17,8 +17,11 @@ class Cat
       "#{ meal_time - 12} PM"
     end
   end
-  
+
+  def meow
+    "My name is #{name} and I eat #{preferred_food} at #{eats_at}."
+  end
 end
 
-fuzzy = Cat.new('fuzzy', 'fish', 2)
-stripes = Cat.new('stripes', 'mice', 10)
+fuzzy = Cat.new('Fuzzy', 'fish', 2)
+stripes = Cat.new('Stripes', 'mice', 10)
