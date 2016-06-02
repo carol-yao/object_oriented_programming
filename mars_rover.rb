@@ -22,12 +22,34 @@ attr_accessor :x_coordinate, :y_coordinate, :direction
     @direction = direction
   end
 
-  def read_instruction
-    if initial_position_header_1[0] != x_coordinate || initial_position_header_1[1] != y_coordinate || initial_position_header_1[2] != direction
-      move
-    else
-      turn
+  def read_instruction(instructions)
+    instructions.each do |i|
+      if i = "L" || "R"
+        turn
+      elsif i = "M"
+        move
+      end
     end
   end
+
+  def move
+    if direction == "N"
+      @y_coordinate += 1
+    elsif direction == "S"
+      @y_coordinate -= 1
+    elsif direction == "E"
+      @x_coordinate += 1
+    elsif direction == "W"
+      @x_coordinate -= 1
+    else
+      "invalid direction given"
+    end
+  end
+
+
+
+
+
+
 
 end
