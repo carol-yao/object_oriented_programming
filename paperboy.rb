@@ -41,6 +41,9 @@ attr_writer :name, :experience, :side
     end
 
     def amount_paid(total_houses)
+      puts experience
+      puts total_houses
+      @experience += total_houses
       if total_houses > quota.to_i
         (quota.to_i * 0.25) + ((total_houses - quota.to_i) * 0.50)
       elsif total_houses == quota.to_i
@@ -49,4 +52,13 @@ attr_writer :name, :experience, :side
         (total_houses * 0.25) - 2
       end
     end
+
+    def report
+      "I'm #{name}, I've delivered #{experience} papers and I've earned $#{earnings.to_f} so far!"
+    end
+
 end
+
+sam = Paperboy.new("Sam", 100, "even", 20)
+
+puts sam.deliver(1, 20)
