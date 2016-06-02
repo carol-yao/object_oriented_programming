@@ -25,3 +25,6 @@ end
 
 fuzzy = Cat.new('Fuzzy', 'fish', 2)
 stripes = Cat.new('Stripes', 'mice', 10)
+
+puts fuzzy.meow
+puts stripes.meow
