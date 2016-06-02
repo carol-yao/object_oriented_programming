@@ -40,4 +40,13 @@ attr_writer :name, :experience, :side
       end
     end
 
+    def amount_paid(total_houses)
+      if total_houses > quota
+        (quota * 0.25) + ((total_houses - quota) * 0.50)
+      elsif total_houses == quota
+        quota * 0.25
+      else
+        total_houses * 0.25
+      end
+    end
 end
