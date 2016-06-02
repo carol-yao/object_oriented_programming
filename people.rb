@@ -31,3 +31,6 @@ class Instructor < Person
     "Everything in Ruby is an Object."
   end
 end
+
+chris = Instructor.new("Chris")
+puts chris.greeting
