@@ -46,6 +46,19 @@ attr_accessor :x_coordinate, :y_coordinate, :direction
     end
   end
 
+  def turn(input)
+    if (direction == "W" && input == "R") || (direction == "E" && input == "L")
+      direction == "N"
+    elsif (direction == "N" && input == "R") || (direction == "S" && input == "L")
+      direction == "E"
+    elsif (direction == "E" && input == "R") || (direction == "W" && input == "L")
+      direction == "S"
+    elsif (direction == "S" && input == "R") || (direction == "N" && input == "L")
+      direction == "W"
+    else
+      "invalid input"
+    end
+  end
 
 
 
