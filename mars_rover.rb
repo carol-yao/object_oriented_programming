@@ -10,23 +10,28 @@ attr_accessor :x_coordinate, :y_coordinate, :direction
 
   def read_instruction(instructions)
     instructions.each do |i|
-      if i = "L" || "R"
-        turn
-      elsif i = "M"
+      if i == "L" || i == "R"
+        turn(i)
+      elsif i == "M"
         move
       end
     end
+    p "#{x_coordinate} #{y_coordinate} #{direction}"
   end
 
   def move
     if direction == "N"
       @y_coordinate += 1
+
     elsif direction == "S"
       @y_coordinate -= 1
+
     elsif direction == "E"
       @x_coordinate += 1
+
     elsif direction == "W"
       @x_coordinate -= 1
+
     else
       "invalid direction given"
     end
@@ -34,13 +39,15 @@ attr_accessor :x_coordinate, :y_coordinate, :direction
 
   def turn(input)
     if (direction == "W" && input == "R") || (direction == "E" && input == "L")
-      direction == "N"
+      @direction = "N"
+
     elsif (direction == "N" && input == "R") || (direction == "S" && input == "L")
-      direction == "E"
+      @direction = "E"
     elsif (direction == "E" && input == "R") || (direction == "W" && input == "L")
-      direction == "S"
+      @direction = "S"
+
     elsif (direction == "S" && input == "R") || (direction == "N" && input == "L")
-      direction == "W"
+      @direction = "W"
     else
       "invalid input"
     end
@@ -63,4 +70,6 @@ initial_position_header_2 = gets.chomp.scan(/\w+/)
 puts "What are the series of moves for the second rover?"
 moves_2 = gets.chomp.split("")
 
-rover_1 = Rover.new(initial_position_header_1[0], initial_position_header_1[1], initial_position_header_1[2])
+rover_1 = Rover.new(initial_position_header_1[0].to_i, initial_position_header_1[1].to_i, initial_position_header_1[2])
+
+rover_1.read_instruction(moves)
