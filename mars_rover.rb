@@ -55,15 +55,12 @@ puts "What is the initial position and header for the first rover?"
 initial_position_header_1 = gets.chomp.scan(/\w+/)
 
 puts "What are the series of moves for the first rover?"
-moves = gets.chomp.scan(/\w+/)
+moves = gets.chomp.split("")
 
 puts "What is the initial position and header for the second rover?"
 initial_position_header_2 = gets.chomp.scan(/\w+/)
 
 puts "What are the series of moves for the second rover?"
-moves_2 = gets.chomp.scan(/\w+/)
+moves_2 = gets.chomp.split("")
 
 rover_1 = Rover.new(initial_position_header_1[0], initial_position_header_1[1], initial_position_header_1[2])
-puts rover_1.x_coordinate
-puts rover_1.y_coordinate
-puts rover_1.direction
