@@ -1,6 +1,7 @@
 class Item
 
   attr_accessor :type, :sales_tax, :price
+  attr_reader :quantity, :name
 
   def initialize(quantity, type, name, price)
     @quantity = quantity
@@ -35,35 +36,42 @@ class Item
     end
   end
 
+  def final_price
+    (calculate_tax + price)
+  end
+
 end
 
 class Receipt
 
-  attr_accessor :total_sales_tax, :total
+  attr_accessor :total_sales_tax, :total, :items
+
   def initialize
     @items = []
     @total_sales_tax = 0
     @total = 0
   end
 
-
-
   def add(item)
     if item.is_a?(Item)
       @items << item
       @total_sales_tax += item.calculate_tax
-      @total += item.calculate_tax + item.price
+      @total += item.final_price
     else
       "That is not of class Item."
     end
   end
 
+  def print_receipt
+    items.each do |item|
+      p "#{item.quantity} #{item.name} : #{item.final_price}"
+    end
+    p "Sales Taxes: #{total_sales_tax}"
+    p "Total: #{total}"
+  end
+
 
 end
-
-
-
-
 
 choco = Item.new(1, "imported good", "choco", 5)
 # puts choco.calculate_tax
@@ -84,7 +92,7 @@ med = Item.new(1, "medical", "choco", 5)
  # puts med.calculate_tax
 
 receipt1 = Receipt.new
-p receipt1.add(choco)
-p receipt1
-puts receipt1.total_sales_tax
-puts receipt1.total
+receipt1.add(choco)
+receipt1.add(food)
+receipt1.add(med)
+receipt1.print_receipt
