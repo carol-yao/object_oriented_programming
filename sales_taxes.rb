@@ -43,11 +43,13 @@ class Receipt
   end
 
   @@sales_tax = 0
+  @@total = 0
 
   def add(item)
     if item.is_a?(Item)
       @items << item
       @@sales_tax += calculate_tax(item)
+      @@total += calculate_tax(item) + @price
     else
       "That is not of class Item."
     end
@@ -57,7 +59,10 @@ class Receipt
     @@sales_tax
   end
 
-
+  def self.total
+    @@total
+  end
+  
 
 end
 
