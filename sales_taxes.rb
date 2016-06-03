@@ -42,6 +42,16 @@ class Receipt
     @items = []
   end
 
+  def add(item)
+    if item.is_a?(Item)
+      @items << item
+    else
+      "That is not of class Item"
+    end
+  end
+  
+
+
 end
 
 # choco = Item.new(1, "imported good", "choco", 5)
