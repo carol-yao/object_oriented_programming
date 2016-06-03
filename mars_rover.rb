@@ -71,5 +71,6 @@ puts "What are the series of moves for the second rover?"
 moves_2 = gets.chomp.split("")
 
 rover_1 = Rover.new(initial_position_header_1[0].to_i, initial_position_header_1[1].to_i, initial_position_header_1[2])
-
+rover_2 = Rover.new(initial_position_header_2[0].to_i, initial_position_header_2[1].to_i, initial_position_header_2[2])
 rover_1.read_instruction(moves)
+rover_2.read_instruction(moves_2)
