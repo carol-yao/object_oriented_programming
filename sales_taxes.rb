@@ -64,19 +64,19 @@ class Receipt
 
   def print_receipt
     items.each do |item|
-      p "#{item.quantity} #{item.name} : #{item.final_price}"
+      p "#{item.quantity} #{item.name} : #{sprintf "%.2f", item.final_price}"
     end
-    p "Sales Taxes: #{total_sales_tax}"
-    p "Total: #{total}"
+    p "Sales Taxes: #{sprintf "%.2f", total_sales_tax}"
+    p "Total: #{sprintf "%.2f", total}"
   end
 
 
 end
 
-choco = Item.new(1, "imported good", "choco", 5)
+choco = Item.new(1, "imported good", "chocolate", 5)
 # puts choco.calculate_tax
 
-fish = Item.new(1, "good", "choco", 5)
+nail_polish = Item.new(1, "good", "nail polish", 5)
 # puts fish.calculate_tax
 
 cracker = Item.new(1, "imported", "choco", 5)
