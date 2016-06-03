@@ -64,35 +64,51 @@ class Receipt
 
   def print_receipt
     items.each do |item|
-      p "#{item.quantity} #{item.name} : #{sprintf "%.2f", item.final_price}"
+      p "#{item.quantity} #{item.name} : #{sprintf "%.2f", ((item.final_price * 20.0).round)/20.0}"
     end
-    p "Sales Taxes: #{sprintf "%.2f", total_sales_tax}"
-    p "Total: #{sprintf "%.2f", total}"
+      p "Sales Taxes: #{sprintf "%.2f", ((total_sales_tax * 20.0).round)/20.0}"
+      p "Total: #{sprintf "%.2f", total}"
   end
 
 
 end
 
-choco = Item.new(1, "imported good", "chocolate", 5)
+chocolate_bar = Item.new(1, "food", "chocolate_bar", 0.85)
 # puts choco.calculate_tax
 
-nail_polish = Item.new(1, "good", "nail polish", 5)
+music_cd = Item.new(1, "good", "music CD", 14.99)
 # puts fish.calculate_tax
 
-cracker = Item.new(1, "imported", "choco", 5)
+imported_chocolates = Item.new(1, "imported", "imported box of chocolates", 10.00)
 # puts cracker.calculate_tax
 
-book = Item.new(1, "book", "choco", 5)
+book = Item.new(1, "book", "book", 12.49)
 # puts book.calculate_tax
 
-food = Item.new(1, "food", "choco", 5)
-# puts food.calculate_tax
+imported_perfume = Item.new(1, "imported good", "imported bottle of perfume", 47.50)
+imported_perfume2 = Item.new(1, "imported good", "imported bottle of perfume", 27.99)
 
-med = Item.new(1, "medical", "choco", 5)
+perfume = Item.new(1, "good", "bottle of perfume", 18.99)
  # puts med.calculate_tax
+headache_pills = Item.new(1, "medical", "packet of headache pills", 9.75)
+imported_chocolates2 = Item.new(1, "imported", "box of imported chocolates", 11.25)
+
+
 
 receipt1 = Receipt.new
-receipt1.add(choco)
-receipt1.add(food)
-receipt1.add(med)
+receipt1.add(book)
+receipt1.add(music_cd)
+receipt1.add(chocolate_bar)
 receipt1.print_receipt
+
+receipt2 = Receipt.new
+receipt2.add(imported_chocolates)
+receipt2.add(imported_perfume)
+receipt2.print_receipt
+
+receipt3 = Receipt.new
+receipt3.add(imported_perfume2)
+receipt3.add(perfume)
+receipt3.add(headache_pills)
+receipt3.add(imported_chocolates2)
+receipt3.print_receipt
